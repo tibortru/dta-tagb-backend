@@ -11,7 +11,7 @@ require('./server/config/express-conf.js')(app);
 
 
 app.use('/', require('./server/controller/category-routes.js'));
-
+app.use('/', require('./server/controller/user-routes.js'));
 
 // Start the application
 var port = 5000;

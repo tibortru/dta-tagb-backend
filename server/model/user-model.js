@@ -5,9 +5,11 @@ var mongoose = require('mongoose');
 // Each schema maps to a MongoDB collection
 // and defines the shape of the documents within that collection.
 UserSchema = new mongoose.Schema({
+  name: String,
   username: String,
   password: String,
-  email: String
+  email: String,
+  creationDate: Date
 });
 
 // Define model
