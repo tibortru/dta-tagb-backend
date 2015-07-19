@@ -1,13 +1,7 @@
-var User = require('../model/user-model.js');
 var express = require('express');
 var userRouter = express.Router();
 var controller = require('./../controller/user-controller.js');
 require('../config/express-conf.js');
-
-userRouter.route('/login')
-    .get()
-    .post(controller.prototype.loginUser)
-    .delete();
 
 userRouter.route('/reset-password')
     .get()

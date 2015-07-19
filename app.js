@@ -10,6 +10,7 @@ require('./server/mongodb.js');
 require('./server/config/express-conf.js')(app);
 
 
+app.use('/', require('./server/routes/index-routes.js'));
 app.use('/', require('./server/routes/category-routes.js'));
 app.use('/', require('./server/routes/user-routes.js'));
 

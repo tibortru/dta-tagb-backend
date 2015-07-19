@@ -7,5 +7,8 @@ module.exports = function (app) {
   }));
   app.use(bodyParser.json());
 
+  app.set('views', './public/views/');
+  app.set('view engine', 'ejs');
+
 
 };

@@ -3,6 +3,8 @@ DTA TAGB Server side, MEAN Stack
 
 Routes:
 
+GET /index
+
 POST /login
 
 POST /reset-password
