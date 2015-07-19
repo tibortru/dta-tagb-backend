@@ -10,8 +10,8 @@ require('./server/mongodb.js');
 require('./server/config/express-conf.js')(app);
 
 
-app.use('/', require('./server/controller/category-routes.js'));
-app.use('/', require('./server/controller/user-routes.js'));
+app.use('/', require('./server/routes/category-routes.js'));
+app.use('/', require('./server/routes/user-routes.js'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

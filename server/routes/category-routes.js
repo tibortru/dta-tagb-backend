@@ -1,7 +1,7 @@
 var Category = require('../model/category-model.js');
 var express = require('express');
 var categoryRouter = express.Router();
-var controller = require('./category-controller.js');
+var controller = require('./../controller/category-controller.js');
 require('../config/express-conf.js');
 
 categoryRouter.route('/')

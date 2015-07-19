@@ -5,11 +5,32 @@ var mongoose = require('mongoose');
 // Each schema maps to a MongoDB collection
 // and defines the shape of the documents within that collection.
 UserSchema = new mongoose.Schema({
-  name: String,
-  username: String,
-  password: String,
-  email: String,
-  creationDate: Date
+  name: {
+    type: String,
+    trim: true,
+    required: 'Name cannot be blank'
+  },
+  username: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: 'Username cannot be blank'
+  },
+  password: {
+    type: String,
+    trim: true,
+    required: 'Password cannot be blank'
+  },
+  email: {
+    type: String,
+    unique: true,
+    trim: true,
+    required: 'Email cannot be blank'
+  },
+  creationDate: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 // Define model

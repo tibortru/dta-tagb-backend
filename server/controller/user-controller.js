@@ -27,8 +27,7 @@ userController.prototype.createUser = function (req, res) {
     name: req.body.name,
     username: req.body.username,
     password: req.body.password,
-    email: req.body.email,
-    creationDate: Date.now()
+    email: req.body.email
   };
   User.create(userParams, function (error, user) {
     return new Promise(function (resolve, reject) {
@@ -40,7 +39,7 @@ userController.prototype.createUser = function (req, res) {
     }).then(function (data) {
           res.status(201).json(data);
         }).catch(function (error) {
-          res.status(500).send(new Error('An error brah'));
+          res.status(500).send(error);
         });
   });
 };
