@@ -1,5 +1,8 @@
 {
   "name": "dta-tagb-backend",
+  "version": "0.0.1",
+  "description": "Tourist Audio Guide Belgrade - backend webapp",
+  "author": "Tibor Trubarac <tibortru@gmail.com>",
   "private": true,
   "scripts": {
     "start": "node app.js"
