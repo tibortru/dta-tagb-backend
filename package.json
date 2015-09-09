@@ -8,9 +8,16 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.2",
+    "connect-flash": "^0.1.1",
     "ejs": "^2.3.3",
     "express": "~4.13.1",
-    "mongoose": "^4.0.7"
+    "express-session": "^1.11.3",
+    "mongoose": "^4.0.7",
+    "mongoose-unique-validator": "^0.4.1",
+    "passport": "^0.2.2",
+    "passport-http": "^0.2.2",
+    "passport-local": "^1.0.0"
   }
 }

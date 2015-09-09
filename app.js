@@ -1,5 +1,6 @@
 // Inject dependencies
 var express = require('express');
+var passport =require('passport');
 
 // Init application
 var app = express();
@@ -8,18 +9,20 @@ var app = express();
 // 
 require('./server/mongodb.js');
 require('./server/config/express-conf.js')(app);
-
+require('./server/config/passport-conf.js')(passport);
 
 app.use('/', require('./server/routes/index-routes.js'));
 app.use('/', require('./server/routes/category-routes.js'));
 app.use('/', require('./server/routes/user-routes.js'));
 
-// catch 404 and forward to error handler
+app.use(express.static('./public'));
+
+/*// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-});
+});*/
 
 // Start the application
 var port = 5000;
