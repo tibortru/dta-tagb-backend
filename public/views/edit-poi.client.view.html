@@ -1,0 +1,41 @@
+<div data-ng-controller="PoisController">
+    <div ng-include="'views/menu.html'"></div>
+
+    <section data-ng-init="findOne()" class="container">
+		<h1>Edit poi</h1>
+		<form data-ng-submit="update()" novalidate class="form-signin">
+
+            <div>
+                <label for="title" class="sr-only">Title</label>
+                <div>
+                    <input type="text" data-ng-model="poi.title" id="title" placeholder="Title" required autofocus class="form-control">
+                </div>
+            </div>
+
+            <div>
+                <label for="photo" class="sr-only">Photo</label>
+                <div>
+                    <input type="text" data-ng-model="poi.photo" id="photo" placeholder="Photo" class="form-control"/>
+                </div>
+            </div>
+            <div>
+                <label for="audio" class="sr-only">audio</label>
+                <div>
+                    <input type="text" data-ng-model="poi.audio" id="audio" placeholder="audio" class="form-control"/>
+                </div>
+            </div>
+            <div>
+                <label for="coordinates" class="sr-only">Coordinates</label>
+                <div>
+                    <input type="text" data-ng-model="poi.coordinates" id="coordinates" placeholder="Coordinates" class="form-control"/>
+                </div>
+            </div>
+			<div>
+				<button type="submit" class="btn btn-lg btn-primary btn-block">Update POI</button>
+			</div>
+			<div data-ng-show="error">
+				<strong data-ng-bind="error"></strong>
+			</div>
+		</form>
+	</section>
+</div>

@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "~1.4.3",
+    "angular-google-maps": "~2.2.1",
     "angular-resource": "~1.4.5",
     "angular-route": "~1.4.4",
     "bootstrap": "~3.3.5",

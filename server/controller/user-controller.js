@@ -1,7 +1,7 @@
 // Inject dependencies
 var User = require('../model/user-model.js');
-var passport = require('passport');
 
+//TODO Move to separate utils JS
 var getErrorMessages = function (err) {
     var messages = new Array();
 
@@ -183,6 +183,15 @@ userController.prototype.registerUser = function (req, res) {
                 return res.redirect('/register');
             });
     });
+};
+
+userController.prototype.requiresLogin = function(req, res, next) {
+    if (!req.isAuthenticated()) {
+        return res.status(401).send({
+            message: 'User is not logged in'
+        });
+    }
+    next();
 };
 
 module.exports = userController;

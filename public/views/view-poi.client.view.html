@@ -1,0 +1,17 @@
+<div data-ng-controller="PoisController">
+    <div ng-include="'views/menu.html'"></div>
+
+	<section data-ng-init="findOne()" class="container">
+		<h1 data-ng-bind="poi.title"></h1>
+		<div data-ng-show="authentication.user._id == poi.createdBy._id">
+			<a href="/#!/pois/{{poi._id}}/edit">edit</a>
+			<a href="#" data-ng-click="delete();">delete</a>
+		</div>
+		<small>
+		<em data-ng-bind="poi.creationDate | date:'mediumDate'"></em>
+		</small>
+		<p data-ng-bind="poi.photo"></p>
+        <p data-ng-bind="poi.audio"></p>
+        <p data-ng-bind="poi.coordinates"></p>
+	</section>
+</div>

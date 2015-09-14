@@ -35,7 +35,8 @@ UserSchema = new mongoose.Schema({
   }
 });
 
-UserSchema.plugin(uniqueValidator);
+UserSchema.plugin(uniqueValidator,
+                  { message: 'Error, {PATH} is already taken.' });
 
 // Check if password is correct
 UserSchema.methods.verifyPassword = function (password, callback) {

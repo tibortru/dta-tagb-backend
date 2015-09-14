@@ -1,0 +1,40 @@
+<div data-ng-controller="PoisController">
+    <div ng-include="'views/menu.html'"></div>
+
+    <section class="container">
+		<h1>New Poi</h1>
+		<form class="form-signin" data-ng-submit="create()" novalidate>
+			<div>
+				<label for="title" class="sr-only">Title</label>
+				<div>
+					<input type="text" data-ng-model="title" id="title" placeholder="Title" required autofocus class="form-control">
+				</div>
+			</div>
+
+			<div>
+				<label for="photo" class="sr-only">Photo</label>
+				<div>
+					<input type="text" data-ng-model="photo" id="photo" placeholder="Photo" class="form-control"/>
+				</div>
+			</div>
+            <div>
+                <label for="audio" class="sr-only">audio</label>
+                <div>
+                    <input type="text" data-ng-model="audio" id="audio" placeholder="audio" class="form-control"/>
+                </div>
+            </div>
+            <div>
+                <label for="coordinates" class="sr-only">Coordinates</label>
+                <div>
+                    <input type="text" data-ng-model="coordinates" id="coordinates" placeholder="Coordinates" class="form-control"/>
+                </div>
+            </div>
+			<div>
+				<button type="submit" class="btn btn-lg btn-primary btn-block">Create POI</button>
+			</div>
+			<div data-ng-show="error">
+				<strong data-ng-bind="error"></strong>
+			</div>
+		</form>
+	</section>
+</div>

@@ -1,5 +1,5 @@
 var appName = 'tagb';
-var app = angular.module(appName, ['ngResource', 'ngRoute', 'tagb-main', 'users']);
+var app = angular.module(appName, ['ngResource', 'ngRoute', 'tagb-main', 'users', 'pois']);
 
 app.config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('!');

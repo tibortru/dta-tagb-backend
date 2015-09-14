@@ -1,0 +1,23 @@
+<div data-ng-controller="PoisController">
+    <div ng-include="'views/menu.html'"></div>
+
+    <section data-ng-init="find()">
+		<div class="container">
+			<h1>Pois</h1>
+			<ul>
+				<li data-ng-repeat="poi in pois">
+					<a data-ng-href="#!/pois/{{poi._id}}" data-ng-bind="poi.title"></a>
+					(<small data-ng-bind="poi.creationDate | date:'short'"></small>)
+					<br>
+
+                    <small data-ng-bind="poi.photo" class="comment"></small>
+                    <small data-ng-bind="poi.audio" class="comment"></small>
+                    <small data-ng-bind="poi.coordinates" class="comment"></small>
+				</li>
+			</ul>
+			<div data-ng-hide="!pois || pois.length">
+				No pois yet, why don't you <a href="/#!/pois/create">create one</a>?
+			</div>
+		</div>
+	</section>
+</div>
