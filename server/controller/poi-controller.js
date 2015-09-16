@@ -21,6 +21,7 @@ poiController.prototype.createPoi = function (req, res) {
         title: req.body.title,
         photo: req.body.photo,
         audio: req.body.audio,
+        description: req.body.description,
         coordinates: req.body.coordinates,
         createdBy: req.user
     };
@@ -83,6 +84,7 @@ poiController.prototype.updatePoi = function (req, res) {
         title: req.body.title,
         photo: req.body.photo,
         audio: req.body.audio,
+        description: req.body.description,
         coordinates: req.body.coordinates
     };
     Poi.findOneAndUpdate({_id: req.params.poiId},

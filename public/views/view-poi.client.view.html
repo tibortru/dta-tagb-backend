@@ -1,40 +1,53 @@
 <div data-ng-controller="PoisController">
     <div ng-include="'views/menu.html'"></div>
 
-	<section data-ng-init="findOne()" class="container">
-		<h1 data-ng-bind="poi.title"></h1>
-		<div data-ng-show="authentication.user._id == poi.createdBy._id">
-			<a href="/#!/pois/{{poi._id}}/edit" class="btn btn-default">Edit</a>
-			<a href="#" data-ng-click="delete();" class="btn btn-danger">Delete</a>
-		</div>
-		<br>
-		<div class="row">
-			<div class="col-md-3">
-				<div class="row">
-					<label class="col-sm-4 control-label">Creation date</label>
-					<div class="col-sm-8">
-						<p data-ng-bind="poi.creationDate | date:'mediumDate'"></p>
-					</div>
-				</div>
-				<div class="row">
-					<label class="col-sm-4 control-label">Photo</label>
-					<div class="col-sm-8">
-						<p data-ng-bind="poi.photo"></p>
-					</div>
-				</div>
-				<div class="row">
-					<label class="col-sm-4 control-label">Audio</label>
-					<div class="col-sm-8">
-						<p data-ng-bind="poi.audio"></p></div>
-					</div>
-				</div>
+    <section data-ng-init="findOne()" class="container">
+        <h1 data-ng-bind="poi.title"></h1>
 
-			<div class="col-md-9">
-				<ui-gmap-google-map center='poi.coordinates' marker="" zoom='map.zoom'>
-					<ui-gmap-marker coords="poi.coordinates" idkey="10">
-					</ui-gmap-marker>
-				</ui-gmap-google-map>
-			</div>
-		</div>
-	</section>
+        <div data-ng-show="authentication.user._id == poi.createdBy._id">
+            <a href="/#!/pois/{{poi._id}}/edit" class="btn btn-default">Edit</a>
+            <a href="#" data-ng-click="delete();" class="btn btn-danger">Delete</a>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div>
+                    <label class="control-label">Creation date</label>
+
+                    <div>
+                        <p data-ng-bind="poi.creationDate | date:'mediumDate'"></p>
+                    </div>
+                </div>
+                <div>
+                    <label class="control-label">Photo</label>
+
+                    <div>
+                        <p data-ng-bind="poi.photo"></p>
+                    </div>
+                </div>
+                <div>
+                    <label class="control-label">Audio</label>
+
+                    <div>
+                        <p data-ng-bind="poi.audio"></p>
+                    </div>
+                </div>
+                <div>
+                    <label class="control-label">Description</label>
+
+                    <div>
+                        <p data-ng-bind="poi.description"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <ui-gmap-google-map center='poi.coordinates' marker="" zoom='map.zoom'>
+                    <ui-gmap-marker coords="poi.coordinates" idkey="10">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+        </div>
+    </section>
 </div>

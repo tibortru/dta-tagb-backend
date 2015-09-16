@@ -29,7 +29,9 @@ angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '
                         latitude: lat,
                         longitude: lng
                     };
-                    $scope.poi.coordinates = [lng, lat]
+                    if($scope.poi) {
+                        $scope.poi.coordinates = [lng, lat];
+                    }
                     //scope apply required because this event handler is outside of the angular domain
                     $scope.$apply();
                 }
@@ -41,6 +43,7 @@ angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '
                 title: this.title,
                 photo: this.photo,
                 audio: this.audio,
+                description: this.description,
                 coordinates: [
                     $scope.map.clickedMarker.longitude,
                     $scope.map.clickedMarker.latitude

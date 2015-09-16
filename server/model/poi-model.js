@@ -20,6 +20,11 @@ PoiSchema = new mongoose.Schema({
         trim: true,
         required: 'Audio cannot be blank'
     },
+    description: {
+        type: String,
+        trim: true,
+        required: 'Description cannot be blank'
+    },
     coordinates: {
         type: [Number],
         index: '2dsphere',
