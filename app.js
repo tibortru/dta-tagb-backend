@@ -11,7 +11,7 @@ require('./server/mongodb.js');
 require('./server/config/express-conf.js')(app);
 require('./server/config/passport-conf.js')(passport);
 
-app.use('/', require('./server/mongo-insert'));
+app.use('/', require('./server/mongo-insert.js'));
 
 app.use('/', require('./server/routes/index-routes.js'));
 app.use('/', require('./server/routes/category-routes.js'));

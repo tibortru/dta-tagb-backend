@@ -21,9 +21,9 @@ PoiSchema = new mongoose.Schema({
         required: 'Audio cannot be blank'
     },
     coordinates: {
-        type: String,
-        trim: true,
-        required: 'Coordinates cannot be blank'
+        type: [Number],
+        index: '2dsphere',
+        required: true
     },
     createdBy: {
         type: Schema.ObjectId,

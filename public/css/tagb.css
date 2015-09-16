@@ -8,10 +8,6 @@ body {
     overflow-x: hidden;
 }
 
-p {
-    font-size: 20px;
-}
-
 p.small {
     font-size: 16px;
 }
@@ -171,7 +167,7 @@ header .intro-text .skills {
 }
 
 section {
-    padding: 100px 0;
+    padding: 50px 0;
 }
 
 section h2 {
@@ -476,3 +472,5 @@ footer {
 .completed {
     text-decoration: line-through;
 }
+
+.angular-google-map-container { height: 400px; }

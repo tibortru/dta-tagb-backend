@@ -4,14 +4,37 @@
 	<section data-ng-init="findOne()" class="container">
 		<h1 data-ng-bind="poi.title"></h1>
 		<div data-ng-show="authentication.user._id == poi.createdBy._id">
-			<a href="/#!/pois/{{poi._id}}/edit">edit</a>
-			<a href="#" data-ng-click="delete();">delete</a>
+			<a href="/#!/pois/{{poi._id}}/edit" class="btn btn-default">Edit</a>
+			<a href="#" data-ng-click="delete();" class="btn btn-danger">Delete</a>
 		</div>
-		<small>
-		<em data-ng-bind="poi.creationDate | date:'mediumDate'"></em>
-		</small>
-		<p data-ng-bind="poi.photo"></p>
-        <p data-ng-bind="poi.audio"></p>
-        <p data-ng-bind="poi.coordinates"></p>
+		<br>
+		<div class="row">
+			<div class="col-md-3">
+				<div class="row">
+					<label class="col-sm-4 control-label">Creation date</label>
+					<div class="col-sm-8">
+						<p data-ng-bind="poi.creationDate | date:'mediumDate'"></p>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-sm-4 control-label">Photo</label>
+					<div class="col-sm-8">
+						<p data-ng-bind="poi.photo"></p>
+					</div>
+				</div>
+				<div class="row">
+					<label class="col-sm-4 control-label">Audio</label>
+					<div class="col-sm-8">
+						<p data-ng-bind="poi.audio"></p></div>
+					</div>
+				</div>
+
+			<div class="col-md-9">
+				<ui-gmap-google-map center='poi.coordinates' marker="" zoom='map.zoom'>
+					<ui-gmap-marker coords="poi.coordinates" idkey="10">
+					</ui-gmap-marker>
+				</ui-gmap-google-map>
+			</div>
+		</div>
 	</section>
 </div>

@@ -2,12 +2,50 @@ angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '
     function($scope, $routeParams, $location, Authentication, Pois) {
         $scope.authentication = Authentication;
 
+        $scope.map = {
+            center: {
+                latitude:44.81609,
+                longitude:20.45996
+            },
+            clickedMarker: {
+                id: 0,
+                options:{
+                }
+            },
+            zoom:18,
+            events: {
+                click: function (marker, eventName, args) {
+                    console.log(args[0].latLng.lat());
+                    console.log(args[0].latLng.lng());
+                    var lat = args[0].latLng.lat();
+                    var lng = args[0].latLng.lng();
+                    $scope.map.clickedMarker = {
+                        id: 0,
+                        /*options: {
+                            labelContent: 'You clicked here ' + 'lat: ' + lat + ' lon: ' + lon,
+                            labelClass: "marker-labels",
+                            labelAnchor:"50 0"
+                        },*/
+                        latitude: lat,
+                        longitude: lng
+                    };
+                    $scope.poi.coordinates = [lng, lat]
+                    //scope apply required because this event handler is outside of the angular domain
+                    $scope.$apply();
+                }
+            }
+        };
+
         $scope.create = function() {
             var poi = new Pois({
                 title: this.title,
                 photo: this.photo,
                 audio: this.audio,
-                coordinates: this.coordinates
+                coordinates: [
+                    $scope.map.clickedMarker.longitude,
+                    $scope.map.clickedMarker.latitude
+                ],
+
             });
 
             poi.$save(function(response) {

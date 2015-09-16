@@ -1,1 +1,1 @@
-angular.module('pois', []);
+angular.module('pois', ['uiGmapgoogle-maps']);
