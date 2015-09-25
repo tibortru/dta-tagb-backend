@@ -2,6 +2,8 @@
     <div ng-include="'views/menu.html'"></div>
 
     <section data-ng-init="findOne()" class="container">
+
+        <div flash-message="5000"></div>
         <h1 data-ng-bind="poi.title"></h1>
 
         <div data-ng-show="authentication.user._id == poi.createdBy._id">
@@ -22,8 +24,14 @@
                 <div>
                     <label class="control-label">Photo</label>
 
-                    <div>
-                        <p data-ng-bind="poi.photo"></p>
+                    <div ng-if="poi.photo">
+                        <img class="img-responsive thumbnail" ng-src="{{poi.photo}}">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="photo">Photo</span>
+                        <input type="file" ngf-select="uploadImage($file)" data-ng-model="file" name="img"
+                               accept="image/*" ngf-max-size="2MB" required
+                               class="form-control" placeholder="Photo" aria-describedby="photo">
                     </div>
                 </div>
                 <div>

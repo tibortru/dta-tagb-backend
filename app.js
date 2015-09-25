@@ -1,6 +1,6 @@
 // Inject dependencies
 var express = require('express');
-var passport =require('passport');
+var passport = require('passport');
 
 // Init application
 var app = express();
@@ -17,6 +17,7 @@ app.use('/', require('./server/routes/index-routes.js'));
 app.use('/', require('./server/routes/category-routes.js'));
 app.use('/', require('./server/routes/user-routes.js'));
 app.use('/', require('./server/routes/poi-routes.js'));
+app.use('/', require('./server/routes/resource-routes.js'));
 
 app.use(express.static('./public'));
 

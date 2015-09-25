@@ -19,8 +19,6 @@ function poiController() {
 poiController.prototype.createPoi = function (req, res) {
     var poiParams = {
         title: req.body.title,
-        photo: req.body.photo,
-        audio: req.body.audio,
         description: req.body.description,
         coordinates: req.body.coordinates,
         createdBy: req.user
@@ -98,6 +96,30 @@ poiController.prototype.updatePoi = function (req, res) {
             }).then(function (resolved) {
                     if(resolved!=null && resolved.length!==0) {
                         res.status(200).json(resolved);
+                    }else {
+                        res.status(500).json({'error':'Point of interest doesn\'t exist!'});
+                    }
+                }).catch(function (rejected) {
+                    res.status(500).send(new Error('Error occurred bro'));
+                });
+        });
+};
+
+poiController.prototype.updatePoiImage = function(req, res) {
+    var updateParams = {
+        photo: 'uploads/images/' + req.file.filename
+    };
+    Poi.findOneAndUpdate({_id: req.params.poiId},
+        updateParams, { 'new': true }, function (error, user) {
+            return new Promise(function (resolve, reject) {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(user);
+                }
+            }).then(function (resolved) {
+                    if(resolved!=null && resolved.length!==0) {
+                        res.status(200).json(resolved._doc.photo);
                     }else {
                         res.status(500).json({'error':'Point of interest doesn\'t exist!'});
                     }

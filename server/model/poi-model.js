@@ -12,13 +12,11 @@ PoiSchema = new mongoose.Schema({
     },
     photo: {
         type: String,
-        trim: true,
-        required: 'Photo cannot be blank'
+        trim: true
     },
     audio: {
         type: String,
-        trim: true,
-        required: 'Audio cannot be blank'
+        trim: true
     },
     description: {
         type: String,

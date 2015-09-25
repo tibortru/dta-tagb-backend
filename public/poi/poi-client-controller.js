@@ -1,6 +1,30 @@
-angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '$location', 'Authentication', 'Pois',
-    function($scope, $routeParams, $location, Authentication, Pois) {
+angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '$timeout','$location',
+    'Authentication', 'Pois', 'Upload', 'Flash',
+    function($scope, $routeParams, $timeout, $location,
+             Authentication, Pois, Upload, Flash) {
         $scope.authentication = Authentication;
+
+        $scope.uploadImage= function(file) {
+            file.upload = Upload.upload({
+                url: '/uploads/images/' + $scope.poi._id,
+                headers: {
+                    'Content-Type': false
+                },
+                fields: {username: $scope.username},
+                file: file,
+                fileFormDataName: 'img'
+            });
+
+            file.upload.then(function (response) {
+                $timeout(function () {
+                    $scope.poi.photo = response.data + "?" + new Date().getTime();
+                    $scope.file = null;
+                    Flash.create('success', 'Photo updated!', 'custom-class');
+                });
+            }, function (response) {
+                Flash.create('error', response.error, 'custom-class');
+            });
+        };
 
         $scope.map = {
             center: {

@@ -1,1 +1,1 @@
-angular.module('pois', ['uiGmapgoogle-maps']);
+angular.module('pois', ['uiGmapgoogle-maps','ngFileUpload','flash','ngAnimate']);
