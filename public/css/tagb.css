@@ -484,6 +484,14 @@ footer {
     border: 1px solid transparent;
     border-radius: 4px;
 }
+.alert.customAlert {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding : 20px 50px 20px 30px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 9999;
+}
 .alert h4 {
     margin-top: 0;
     color: inherit;

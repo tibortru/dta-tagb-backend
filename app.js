@@ -21,6 +21,15 @@ app.use('/', require('./server/routes/resource-routes.js'));
 
 app.use(express.static('./public'));
 
+
+//ERROR HANDLING
+
+app.use(function (err, req, res, next) {
+  if (err.code === 'LIMIT_FILE_SIZE') {
+    res.status(500).json('File is larger than 2MB!');
+  }
+});
+
 /*// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

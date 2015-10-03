@@ -19,10 +19,11 @@ angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '
                 $timeout(function () {
                     $scope.poi.photo = response.data + "?" + new Date().getTime();
                     $scope.file = null;
-                    Flash.create('success', 'Photo updated!', 'custom-class');
+                    Flash.create('success', 'Photo updated!', 'customAlert');
                 });
             }, function (response) {
-                Flash.create('error', response.error, 'custom-class');
+                $scope.file = null;
+                Flash.create('danger', response.data, 'customAlert');
             });
         };
 

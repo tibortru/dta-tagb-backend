@@ -11,14 +11,38 @@ var imageStorage = multer.diskStorage({
         cb(null, './uploads/images/')
     }
 });
-var imgMulter = multer({ storage: imageStorage });
+
+var imgMulter = multer({
+    storage: imageStorage ,
+    limits:{
+        fileSize:2*1024*1024
+    },
+    fileFilter: function (req, file, cb) {
+
+        // The function should call `cb` with a boolean
+        // to indicate if the file should be accepted
+
+        // To reject this file pass `false`, like so:
+        if (file.mimetype !== 'image/png'
+            && file.mimetype !== 'image/jpg'
+            && file.mimetype !== 'image/jpeg'
+            && file.mimetype !== 'image/gif') {
+            console.log('Got file of type', file.mimetype);
+            return cb('Only image files are allowed!');
+        }
+
+        // To accept the file pass `true`, like so:
+        cb(null, true);
+
+    }
+});
 var audioMulter = multer({ dest: './uploads/audio/' });
 require('../config/express-conf.js');
 
 resourceRouter.route('/uploads/images/:poiId')
     .post(userController.prototype.requiresLogin,
-            resourceController.prototype.removeImage,
             imgMulter.single('file'),
+            resourceController.prototype.removeImage,
             poiController.prototype.updatePoiImage);
 
 resourceRouter.route('/uploads/images/:filename')
