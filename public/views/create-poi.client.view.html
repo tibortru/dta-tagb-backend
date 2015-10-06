@@ -2,6 +2,7 @@
     <div ng-include="'views/menu.html'"></div>
 
     <section class="container">
+        <div flash-message="5000"></div>
         <h1>New Poi</h1>
         <div class="row">
             <form class="form-signin" data-ng-submit="create()" novalidate>
@@ -39,9 +40,6 @@
                     <div>
                         <button type="submit" class="btn btn-lg btn-success btn-block">Create POI</button>
                     </div>
-                </div>
-                <div data-ng-show="error">
-                    <strong data-ng-bind="error"></strong>
                 </div>
             </form>
         </div>

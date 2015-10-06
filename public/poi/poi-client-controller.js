@@ -40,8 +40,6 @@ angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '
             zoom:18,
             events: {
                 click: function (marker, eventName, args) {
-                    console.log(args[0].latLng.lat());
-                    console.log(args[0].latLng.lng());
                     var lat = args[0].latLng.lat();
                     var lng = args[0].latLng.lng();
                     $scope.map.clickedMarker = {
@@ -79,7 +77,17 @@ angular.module('pois').controller('PoisController', ['$scope', '$routeParams', '
             poi.$save(function(response) {
                 $location.path('pois/' + response._id);
             }, function(errorResponse) {
-                $scope.error = errorResponse.data.message;
+                var i = 0;
+                var text = '';
+                var msgArray = errorResponse.data.message;
+
+                for (; i < msgArray.length; i++) {
+                    text += msgArray[i];
+                    if(i!=msgArray.length-1){
+                        text += '<br>';
+                    }
+                }
+                Flash.create('danger', text, 'customAlert');
             });
         };
 

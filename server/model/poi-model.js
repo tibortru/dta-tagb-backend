@@ -8,7 +8,7 @@ PoiSchema = new mongoose.Schema({
     title: {
         type: String,
         trim: true,
-        required: 'Title cannot be blank'
+        required: '<b>Title</b> cannot be blank.'
     },
     photo: {
         type: String,
@@ -21,12 +21,18 @@ PoiSchema = new mongoose.Schema({
     description: {
         type: String,
         trim: true,
-        required: 'Description cannot be blank'
+        required: '<b>Description</b> cannot be blank.'
     },
     coordinates: {
         type: [Number],
         index: '2dsphere',
-        required: true
+        required: '<b>Coordinates</b> are not selected.',
+        validate: {
+            validator: function(v) {
+                return null != v[0] || null != v[1];
+            },
+            message: '<b>Coordinates</b> are not selected.'
+        }
     },
     createdBy: {
         type: Schema.ObjectId,
