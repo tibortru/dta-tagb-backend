@@ -28,7 +28,7 @@ var imgMulter = multer({
             && file.mimetype !== 'image/jpeg'
             && file.mimetype !== 'image/gif') {
             console.log('Got file of type', file.mimetype);
-            return cb('Only image files are allowed!');
+            cb(new Error('Only image files are allowed!'));
         }
 
         // To accept the file pass `true`, like so:
